@@ -54,7 +54,7 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 });
 
 // Serve React frontend (client)
-const clientDistPath = path.join(__dirname, '../../client');
+const clientDistPath = path.join(__dirname, '../../client/dist/client');
 app.use(express.static(clientDistPath));
 
 // SPA fallback - all routes go to index.html
