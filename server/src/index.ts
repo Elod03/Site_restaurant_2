@@ -53,6 +53,15 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   });
 });
 
+// Serve React frontend (client)
+const clientDistPath = path.join(__dirname, '../../client');
+app.use(express.static(clientDistPath));
+
+// SPA fallback - all routes go to index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientDistPath, 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`🍽️  L'Imperial 服务器已启动: http://localhost:${PORT}`);
 });
